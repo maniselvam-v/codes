@@ -1,0 +1,12 @@
+
+(select name as results from movierating mr join
+
+users s on s.user_id=mr.user_id  
+group by mr.user_id order by count(*) desc, name asc limit 1) 
+union all
+(select m.title from movierating mr join
+movies m on m.movie_id=mr.movie_id 
+
+WHERE created_at BETWEEN '2020-02-01' AND '2020-02-29' 
+group by m.movie_id  order by 
+avg(rating) desc, title asc limit 1)
