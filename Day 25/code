@@ -1,0 +1,29 @@
+class Solution(object):
+    def isMatch(self, s, p):
+        i,j=0,0
+
+        lm,ss=0,-1
+        while i<len(s):
+            if j<len(p) and (s[i]==p[j] or p[j]=='?'):
+                i+=1
+                j+=1
+            elif j<len(p) and p[j]=='*':
+                lm=i
+                ss=j
+                j+=1
+            elif ss!=-1:
+                j=ss+1
+                i=lm+1
+                lm+=1
+            else:
+                return False
+        while j<len(p)and p[j]=='*':
+            j+=1
+        return j==len(p)
+
+
+
+        
+
+        
+        
