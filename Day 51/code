@@ -1,1 +1,13 @@
+class Solution(object):
+    def buildArray(self, target, n):
+        res = []
+        current = 1 
+        
+        for num in target:
+            while current < num:
+                res += ["Push", "Pop"]  
+                current += 1
+            res.append("Push")
+            current+=1
+        return res  
 
