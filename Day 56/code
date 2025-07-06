@@ -1,0 +1,16 @@
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
+        wordSet=set(wordDict)
+
+        def wordBreak(s):
+            ans=[]
+            for i in range(1,len(s)):
+                p=s[:i]
+                su=s[i:]
+                if p in wordSet:
+                    for word in wordBreak(su):
+                        ans.append(p+' '+word)
+            if s in wordSet:
+                ans.append(s)
+            return ans
+        return wordBreak(s)
