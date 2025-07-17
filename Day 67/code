@@ -1,0 +1,16 @@
+import collections
+class Solution(object):
+    def findLHS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        counts=collections.Counter(nums)
+        max_len=0
+        current_length=0
+        for num in counts:
+            if num+1 in counts:
+                current_length=counts[num]+counts[num+1]
+                max_len=max(max_len,current_length)
+        return max_len
+        
