@@ -1,0 +1,15 @@
+class Solution(object):
+    def maxRotateFunction(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        s=sum(nums)
+        f=sum(i*num for i,num in enumerate(nums))
+        m_f=f
+        n=len(nums)
+        for i in range(n-1,0,-1):
+            f+=s-n*nums[i]
+            m_f=max(m_f,f)
+        return m_f
+        
